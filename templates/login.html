@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block styles %}
+<style>
+  body {
+    background-repeat: no-repeat;
+    
+    background-size: cover;
+    background-position: center;
+    
+    background-image: url('https://imgs.search.brave.com/Y7oMLZs_m8wbCt0wIaSWvc5UNfwjEL4VpcxmYrn8LRw/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9h/aS10ZWNobm9sb2d5/LW1pY3JvY2hpcC1i/YWNrZ3JvdW5kLWRp/Z2l0YWwtdHJhbnNm/b3JtYXRpb24tY29u/Y2VwdF81Mzg3Ni0x/MjQ2NjkuanBnP3Np/emU9NjI2JmV4dD1q/cGc');
+  }
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .card {
+    max-width: 400px;
+  }
+  .card-header {
+    background-color: #ffb84c;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    
+  }
+  .card-body {
+    padding: 30px;
+  }
+  .form-group {
+    margin-bottom: 20px;
+    
+
+  }
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  input[type=text], input[type=password] {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  button[type=submit] {
+    background-color: #1b2430;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+  button[type=submit]:hover {
+    background-color: #0062cc;
+  }
+  .alert-danger {
+    background-color: #f8d7da;
+    color: black;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+  }
+  div{
+    background-image:url("https://imgs.search.brave.com/RJ51TIHSkyEcAAQtBW_chGOyGT03aw3YGNUztm42Zmg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zdC5k/ZXBvc2l0cGhvdG9z/LmNvbS8xMDAwNTgw/LzE4NzYvaS82MDAv/ZGVwb3NpdHBob3Rv/c18xODc2ODk5OS1z/dG9jay1waG90by1n/b2xkLWJhY2tncm91/bmQuanBn");
+    background-size:cover;
+    background-repeat:no-repeat;
+    
+    
+    
+    }
+    
+  
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+  <div class="card">
+    <div class="card-header">Login</div>
+    <div class="card-body">
+      {% if error_message %}
+        <div class="alert alert-danger" role="alert">{{ error_message }}</div>
+      {% endif %}
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
